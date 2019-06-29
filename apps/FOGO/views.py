@@ -87,3 +87,12 @@ def login(request):
 def logout(request):
     request.session.clear()
     return redirect('/logreg')
+
+def donations(request):
+    return render(request, 'donations.html')
+
+def account(request):
+    return render(request, 'account.html')
+
+def admin(request):
+    return render(request, 'admin.html')
