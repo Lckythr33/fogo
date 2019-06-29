@@ -11,7 +11,7 @@ class User(models.Model):
     city = models.CharField(max_length = 60)
     state = models.CharField(max_length = 60)
     zipcode = models.IntegerField()
-    aptnum = models.IntegerField()
+    aptnum = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)

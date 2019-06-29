@@ -38,9 +38,12 @@ def register(request):
     if not any(x.isdigit() for x in request.POST['zip_code']):
         messages.error(request,"Zip code need a digit!" , extra_tags='zip')
         error = True
-    if not any(x.isdigit() for x in request.POST['aptnum']):
-        messages.error(request,"Apartment num need a digit!" , extra_tags='aptnum')
-        error = True   
+    if len(request.POST['city'])<1:
+        messages.error(request,"Please enter city!", extra_tags='city')
+        error= True
+    if len(request.POST['state'])<1:
+        messages.error(request,"Please enter state!", extra_tags='state')
+        error= True
 
     matching_users = User.objects.filter(email=request.POST['email'])
     if len(matching_users) > 0:
