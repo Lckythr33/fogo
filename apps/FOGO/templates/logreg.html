@@ -1,23 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-    form{
-        display:inline-block;
-    }
-    .red{
-        background-color:red;
-        color:white;
-    }
-    .green{
-        background-color:green;
-        color:white;
-    }
-    .nav-wrapper{
-      padding-left:10px;
-      background-color:#546e7a;
-    }
-    </style>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -28,16 +12,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/alert.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
     <title>Login Page</title>
 </head>
-<body style= "padding-bottom:20px;">
-    <div class="logandreg">
+<body style= "padding:20px;">
+    <div class="logandreg center-align">
 
     <nav>
-        <div class="nav-wrapper">
-          <a href="/" class="brand-logo">FOGO</a>
+        <div class="nav-wrapper left-align">
+          <a href="/" style='font-size:50px;' class="brand-logo">FOGO</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/">Home</a></li>
+            <li><a href="/">Account</a></li>
             <li><a href="/services">Services</a></li>
           </ul>
         </div>
@@ -45,30 +31,31 @@
 
     <form action='/register' method="post">
         {% csrf_token %}
-    <div class="row">
-            <div class="col s12 m7" style="width: 500px;" >
+    <div class="row center-align">
+            <div class="col s12 m7" style="width: 600px;" >
               <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                  
+                  <div class="row">
                     <span class="card-title">Registration:</span>
-                    <div class= "input-field">
+                
+                    <div class= "input-field col s12">
                         <i class="material-icons prefix">business</i>
                         <input id="icon_prefix" type="text" name="company_name" class="validate">
                         <label for="icon_prefix">Company Name:</label>
-                      </div>
-                    {% for message in messages %}
+                      {% for message in messages %}
                       {% if message.extra_tags == "name" %}
                             <div class="alert alert-danger">{{ message }}</div>
                       {% endif %}
                     {% endfor %}
-        
-                    <div class="input-field">
+                    </div>
+                    
+                      
+                    <div class="input-field col s12">
                       <i class="material-icons prefix">email</i>
                       <input id="email" type="email" name="email" class="validate">
                       <label for="email">Email:</label>
                       <span class="helper-text" data-error="Please use a valid email format!" data-success="Valid email format!">Use Valid Email!</span>
-                    </div>
-                    {% for message in messages %}
+                      {% for message in messages %}
                     {% if message.extra_tags == "invalidemail" %}
                     <div class="alert alert-danger">{{ message }}</div>
                     {% endif %}
@@ -79,70 +66,83 @@
                     <div class="alert alert-danger">{{ message }}</div>
                     {% endif %}
                     {% endfor %}
+                  </div>
+                  
 
-                      <div class= "input-field">
+                      <div class= "input-field col s12">
                           <i class="material-icons prefix">home</i>
                           <input id="street" type="text" name="street" class="validate">
                           <label for="street">Street:</label>
-                      </div>
-                      {% for message in messages %}
+                        {% for message in messages %}
                       {% if message.extra_tags == "address" %}
                       <div class="alert alert-danger">{{ message }}</div>
                       {% endif %}
                       {% endfor %}
-
-                      <div class= "input-field">
+                    </div>
+                    
+                      <div class= "input-field col s12">
+                          <i class="material-icons prefix">dialpad</i>
+                          <input id="aptnum" type="text" name="aptnum" class="validate">
+                          <label for="aptnum">Street2 #:</label>
+                      </div>
+                      
+                      <div class= "input-field col s4">
                           <i class="material-icons prefix">location_city</i>
                           <input id="city" type="text" name="city" class="validate">
                           <label for="city">City:</label>
+                          {% for message in messages %}
+                          {% if message.extra_tags == "city" %}
+                          <div class="alert alert-danger">{{ message }}</div>
+                          {% endif %}
+                        {% endfor %}
                       </div>
 
-                      <div class= "input-field">
+                      <div class= "input-field col s4">
                           <i class="material-icons prefix">airplanemode_active</i>
                           <input id="state" type="text" name="state" class="validate">
                           <label for="state">State:</label>
+                          {% for message in messages %}
+                          {% if message.extra_tags == "state" %}
+                          <div class="alert alert-danger">{{ message }}</div>
+                          {% endif %}
+                        {% endfor %}
                       </div>
-                      <div class= "input-field">
+
+                      <div class= "input-field col s4">
                           <i class="material-icons prefix">location_on</i>
                           <input id="zip_code" type="text" name="zip_code" class="validate">
                           <label for="zip_code">Zip:</label>
-                      </div>
                       {% for message in messages %}
                       {% if message.extra_tags == "zip" %}
                       <div class="alert alert-danger">{{ message }}</div>
                       {% endif %}
                       {% endfor %}
-                      <div class= "input-field">
-                          <i class="material-icons prefix">dialpad</i>
-                          <input id="aptnum" type="text" name="aptnum" class="validate">
-                          <label for="aptnum">Apartment num(Optional):</label>
-                      </div>
-                      {% for message in messages %}
-                      {% if message.extra_tags == "aptnum" %}
-                      <div class="alert alert-danger">{{ message }}</div>
-                      {% endif %}
-                      {% endfor %}
-                        <div class="input-field">
+                    </div>
+                    
+                      
+                        <div class="input-field col s12">
                             <i class="material-icons prefix">lock_open</i>
                             <input id="icon_pass" type="password" name="password" class="validate">
                             <label for="icon_pass">Password:</label>
-                        </div>
-                        {% for message in messages %}
+                         {% for message in messages %}
                         {% if message.extra_tags == "password" %}
                         <div class="alert alert-danger">{{ message }}</div>
                         {% endif %}
                       {% endfor %}
-    
-                        <div class="input-field">
+                        </div>
+                       
+                        <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
                             <input placeholder="Password needs capital letter and number!" id="icon_confirm" type="password" name="confirm" class="validate">
                             <label for="icon_confirm">Confirm Password:</label>
-                        </div>
-                        {% for message in messages %}
+                         {% for message in messages %}
                         {% if message.extra_tags == "confirm" %}
                         <div class="alert alert-danger">{{ message }}</div>
                         {% endif %}
                       {% endfor %}
+                    </div>
+                       
+                    </div>
 
                 <div class="card-action">
                   <button class="btn waves-effect waves-light" type="submit" value="Reg">Register
@@ -157,7 +157,7 @@
 
     <form action='/login' method="post" style='vertical-align: top;'>
         {% csrf_token %}
-    <div class="row">
+    <div class="row center-align">
             <div class="col s12 m7" style="width: 400px;">
               <div class="card blue-grey darken-1">
                   <div class="card-content white-text">
@@ -174,6 +174,7 @@
                   <label for="log_email">Email:</label>
                   <span class="helper-text" data-error="Please use a valid email format!" data-success="Valid email format!">Use Valid Email!</span>
                 </div>
+
                 <div class="input-field">
                     <i class="material-icons prefix">lock_open</i>
                     <input id="log_pass" type="password" name="log_password" class="validate">
