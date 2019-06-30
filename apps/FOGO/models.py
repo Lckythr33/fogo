@@ -13,6 +13,16 @@ class User(models.Model):
     zipcode = models.IntegerField()
     aptnum = models.IntegerField(default=0)
 
+    lat = models.CharField(max_length = 60, default="0")
+    lon = models.CharField(max_length = 60, default ="0")
+
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
+class Pickup(models.Model):
+    day_week = models.CharField(max_length = 60)
+    day_month = models.DateField()
+    frequency = models.CharField(max_length = 60)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
 
