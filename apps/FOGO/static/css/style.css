@@ -1,5 +1,12 @@
-body{
-background:radial-gradient(rgb(207, 204, 204),#546e7a)
+*{
+    padding: 0;
+    margin: 0;
+}
+
+html{
+background:linear-gradient(#546e7a,rgb(207, 204, 204)) no-repeat;
+background-size: cover;
+height: 100%;
 }
 
 form{
@@ -16,4 +23,82 @@ color:white;
 .nav-wrapper{
 padding-left:10px;
 background-color:#546e7a;
+}
+
+#tabs{
+    width: 10%;
+    min-width: 100px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top:30px;
+}
+
+#tabs p{
+    background-color: #546e7a;
+    padding: 5px 0px;
+    margin: 5px 0px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#frequency{
+    margin: 50px auto;
+    text-align: center;
+    /* color: white; */
+}
+
+#main_content{
+    display: inline-block;
+    min-height: 500px;
+    min-width: 500px;
+    width: 60%;
+    background-color: #546e7a;
+    box-shadow: 5px 5px 10px #49565c;
+}
+
+.checkbox{
+    margin-right: 15px;
+}
+
+#daily, #weekly{
+    display: none;
+}
+
+
+.about{
+    padding-top:20px;
+    width: 100%;
+
+}
+
+.aboutText{
+    display: inline-block;
+    width:50%;
+    vertical-align: top; 
+    color:white; 
+    background: rgb(83, 110, 122); 
+    border-radius:5px;
+    padding:10px;
+    height:auto;
+}
+
+.img{
+    height:100%;
+    width:50%;
+    display:inline-block;
+}
+
+
+@media only screen and (max-width: 1260px) {
+    .img, .aboutText {
+        width: 100%;
+    }
+}
+
+.myclass {
+    display: table-cell;
+    margin: 0em;
+    padding: 1em;
+    height: auto;
+    border: solid;
+    vertical-align:top;
 }
