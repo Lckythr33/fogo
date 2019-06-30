@@ -105,28 +105,28 @@ def admin(request):
     return render(request, 'admin.html')
 
 def update(request):
-    usermatch = User.objects.filter(id=request.session['user_id'])
-    user = usermatch[0]
-    print(user)
-    error=False
-    if not 'user_id' in request.session:
-        messages.error(request,"No user!", extra_tags='nouser')
-        print("no user")
-        error= True
-    if bcrypt.checkpw(request.POST['old_password'].encode() , user.password.encode()):
-        messages.error(request,"Old Password Incorrect!", extra_tags='oldpassword')
-        print("wrong pass")
-        error= True
-    
-    # if error:
-    #     return redirect('/logreg')
+    print(request.POST)
+    matching_users = User.objects.filter(id=request.session['user_id'])
+    if len(matching_users) > 0:
+        #email matched now check pw
+        user = matching_users[0]
+        if bcrypt.checkpw(request.POST['old_password'].encode() , user.password.encode()):
+            user.name = request.POST['company_name']
+            user.email = request.POST['email']
+            hashed = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt())
+            user.password = hashed
+            user.street = request.POST['street']
+            user.city = request.POST['city']
+            user.state = request.POST['state']
+            user.zipcode = request.POST['zip_code']
+            user.aptnum = request.POST['aptnum']
+            user.save()
+            return redirect('/donations')
+        else:
+            messages.error(request,"Invalid Credentials!",extra_tags='invalidcred')   
+    else:
+        messages.error(request,"Invalid Credentials!",extra_tags='invalidcred')  
+    return redirect('/logreg')
 
-    user.name = request.POST['name']
-    user.email = request.POST['email']
-    user.password = request.POST['password']
-    user.street = request.POST['street']
-    user.city = request.POST['city']
-    user.state = request.POST['state']
-    user.zipcode = request.POST['zipcode']
-    user.aptnum = request.POST['aptnum']
-    return redirect('/')
+
+   
