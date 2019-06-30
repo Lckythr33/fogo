@@ -4,15 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
-
-    <title>FOGO</title>
+    <title>HomePage</title>
 </head>
-<body>
-    
-Test main page!
+<body  style="padding:20px;">
+    <nav>
+        <div class="nav-wrapper left-align">
+            <a href="/" style='font-size:50px;' class="brand-logo">FOGO</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Account</a></li>
+            <li><a href="/services">Services</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="about">
+            <img class="img" src="static/img/donations_team.jpg" alt=""><!--
+        --><div class="aboutText"  class="myclass">
+                <h3 >What we do</h3>
+                <hr>
+                <p style="font-size:20px">Do you want to make a difference in your local community? If you're a business owner we want to partner with you to help drive down foot shortages. Did you know that there are an estimated 554,000 homeless across America going hungry each night? Our goal is to pair with local eateries to pick up their food waste at nights end and donate them to a local food bank. Here at FoGo we believe in:
+                <br>
+                FEEDING THE WORLD ONE CITY AT A TIME!
+                </p>
+            </div>
+        
+        <div class="infoGraph" style="margin:0 auto; text-align: center">
+            <h3 style="color:white">How you can help</h3>
+            <i class="large material-icons" style="color:white; font-size: 100px">call</i>
+            <i class="large material-icons" style="color:rgba(255, 255, 255, 0.836); font-size: 100px">forward</i>
+            <i class="large material-icons" style="color:white; font-size: 100px">airport_shuttle</i>
+            <i class="large material-icons" style="color:white; font-size: 100px">forward</i>
+            <i class="large material-icons" style="color:white; font-size: 100px">store</i>
+        </div>
+        <div class="location">
+            
+            <div class="map" style="padding-bottom: 50px; text-align: center">
+                <h3 style="color:white">Where to find us</h3>
+                <img src="static/img/locations2.svg" alt="" height="80%"; width="80%">
+            </div>
+        </div>
 
+    </div>
 
 
 </body>
