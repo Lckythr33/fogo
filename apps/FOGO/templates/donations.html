@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Donations - FOGO</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/alert.css' %}"> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    <script>
+        $(document).ready(function(){
+            $('.datepicker').datepicker();
+            $('.timepicker').timepicker();
+
+            $('#one_time_btn').click(function(){
+                $('#one_time').css('display', 'block');
+                $('#daily').css('display', 'none');
+                $('#weekly').css('display', 'none');
+            })
+
+            $('#daily_btn').click(function(){
+                $('#daily').css('display', 'block');
+                $('#one_time').css('display', 'none');
+                $('#weekly').css('display', 'none');
+            })
+
+            $('#weekly_btn').click(function(){
+                $('#weekly').css('display', 'block');
+                $('#daily').css('display', 'none');
+                $('#one_time').css('display', 'none');
+            })
+        });
+
+    </script>
+</head>
+<body style= "padding:20px;">
+    <nav>
+        <div class="nav-wrapper left-align">
+            <a href="/" style='font-size:50px;' class="brand-logo">FOGO</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Account</a></li>
+            <li><a href="/services">Services</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="content">
+        <div id="frequency">
+            <div id="tabs">
+                <p id="one_time_btn">One-Time</p>
+                <p id="daily_btn">Daily</p>
+                <p id="weekly_btn">Weekly</p>
+            </div>
+            <div id="main_content">
+                <div id="one_time">
+                    <h2>One-Time Donation</h2>
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">date_range</i>
+                                    <input id="date" name="date" type="text" class="validate datepicker">
+                                    <label for="date">Date</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="start_time" name="start_time" type="text" class="validate timepicker">
+                                    <label for="start_time">Time Range (start)</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="end_time" name="end_time" type="text" class="validate timepicker">
+                                    <label for="end_time">Time Range (end)</label>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn waves-effect waves-light" type="submit" value="Donate">Donate
+                                    <i class="material-icons right">favorite_border</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div id="daily">
+                    <h2>Daily Donation</h2>
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="start_time" name="start_time" type="text" class="validate timepicker">
+                                    <label for="start_time">Time Range (start)</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="end_time" name="end_time" type="text" class="validate timepicker">
+                                    <label for="end_time">Time Range (end)</label>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn waves-effect waves-light" type="submit" value="Donate">Donate
+                                    <i class="material-icons right">favorite_border</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="weekly">
+                    <h2>Weekly Donation</h2>
+                    <div class="row">
+                        <form class="col s12">
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>M</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>Tu</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>W</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>Th</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>F</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>S</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" name="day">
+                                <span>Su</span>
+                            </label>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="start_time" name="start_time" type="text" class="validate timepicker">
+                                    <label for="start_time">Time Range (start)</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">access_time</i>
+                                    <input id="end_time" name="end_time" type="text" class="validate timepicker">
+                                    <label for="end_time">Time Range (end)</label>
+                                </div>
+                            </div>
+                            <div class="card-action">
+                                <button class="btn waves-effect waves-light" type="submit" value="Donate">Donate
+                                    <i class="material-icons right">favorite_border</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
